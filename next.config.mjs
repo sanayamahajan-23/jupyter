@@ -1,9 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-// next.config.mjs
+// next.config.mjs (development only)
 export default {
-  devServer: {
-    allowedOrigins: ["http://172.20.10.2:3000"], // Your laptop's IP address
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:3000/api/:path*",
+      },
+    ];
   },
 };
